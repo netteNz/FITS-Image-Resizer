@@ -11,7 +11,6 @@ Python script that processes FITS image files by cropping them to a specified si
 - Ensures valid cropping dimensions to prevent errors.
 
 ## Dependencies
-Ensure you have the following dependencies installed before running the script:
 
 ```sh
 pip install astropy numpy tkinter
