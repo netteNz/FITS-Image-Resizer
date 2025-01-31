@@ -23,7 +23,7 @@ pip install astropy numpy tkinter
 ## Usage
 1. Run the script:
    ```sh
-   python fits_resizer.py
+   python resize.py
    ```
 2. Select the **source folder** containing FITS files.
 3. Select an **empty destination folder** for cropped images.
