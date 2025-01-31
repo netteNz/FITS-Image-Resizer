@@ -1,7 +1,7 @@
 # FITS Image Resizer
 
 ## Overview
-The FITS Image Resizer is a Python script that processes FITS image files by cropping them to a specified size and saving them with preserved metadata. It allows users to select a source folder, choose a destination folder, and specify crop dimensions.
+Python script that processes FITS image files by cropping them to a specified size and saving them with preserved metadata. It allows selection of a source folder, a destination folder, and specify crop dimensions.
 
 ## Features
 - Select source and destination folders using a GUI.
@@ -11,7 +11,6 @@ The FITS Image Resizer is a Python script that processes FITS image files by cro
 - Ensures valid cropping dimensions to prevent errors.
 
 ## Dependencies
-Ensure you have the following dependencies installed before running the script:
 
 ```sh
 pip install astropy numpy tkinter
