@@ -18,7 +18,7 @@ pip install astropy numpy tkinter
 ```
 
 - `astropy`: For handling FITS file operations.
-- `numpy`: For efficient numerical operations.
+- `numpy`: For numerical operations.
 - `tkinter`: For graphical folder selection.
 
 ## Usage
