@@ -41,7 +41,7 @@ You are prompted via the console to enter:
   For more advanced or automated workflows, you can provide parameters via command-line arguments. The following commands are available:
   **Basic Command-Line Example:**
     ```bash
-    python crop_fits.py --source_folder /path/to/source \
+    python resize.py --source_folder /path/to/source \
                         --destination_folder /path/to/destination \
                         --x_start 100 --y_start 100 \
                         --x_size 500 --y_size 500
