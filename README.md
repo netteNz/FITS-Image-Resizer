@@ -41,7 +41,7 @@ pip install astropy numpy tkinter
 ## Header Updates
 - The FITS header is updated with new image dimensions (`NAXIS1`, `NAXIS2`).
 - The **World Coordinate System (WCS) is updated** to reflect the new reference pixel positions (`CRPIX1`, `CRPIX2`).
-- Non-compliant FITS headers (e.g., invalid values) are automatically handled or removed.
+- Non-compliant FITS headers (invalid values) are automatically handled or removed.
 - Essential metadata (`EXPTIME`, `DATE-OBS`, `FILTER`, `TELESCOP`, `INSTRUME`) is preserved.
 - A `HISTORY` entry is added to document the modification.
 
