@@ -1,7 +1,3 @@
-Below is a simple `README.md` that you can include with your script:
-
----
-
 # FITS Crop Script
 
 This script crops FITS images while preserving important metadata—including updating the World Coordinate System (WCS) information in the FITS header. It is useful for batch processing astronomical images when you need to extract a region of interest.
