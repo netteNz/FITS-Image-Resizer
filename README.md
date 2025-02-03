@@ -1,61 +1,61 @@
-# FITS Image Resizer
+Below is a simple `README.md` that you can include with your script:
 
-## Overview
-The FITS Image Resizer is a Python script that processes FITS image files by cropping them to a specified size and saving them with updated metadata. It allows users to select a source folder, choose a destination folder, and specify crop dimensions.
+---
+
+# FITS Crop Script
+
+This script crops FITS images while preserving important metadata—including updating the World Coordinate System (WCS) information in the FITS header. It is useful for batch processing astronomical images when you need to extract a region of interest.
 
 ## Features
-- Select source and destination folders using a GUI.
-- Crop images from a user-specified upper-left coordinate.
-- Save cropped images with updated FITS headers.
-- Automatically handles non-compliant FITS headers.
-- Ensures valid cropping dimensions to prevent errors.
-- **Adjusts World Coordinate System (WCS) values** to maintain correct celestial coordinates.
-- **Preserves essential metadata** such as `EXPTIME`, `DATE-OBS`, `FILTER`, `TELESCOP`, and `INSTRUME`.
-- **Adds a history entry** to track modifications made to the FITS file.
 
-## Dependencies
-Ensure you have the following dependencies installed before running the script:
+- **Batch Processing:** Processes all FITS files in a specified source folder.
+- **Accurate Cropping:** Uses user-defined starting coordinates and dimensions (width and height in pixels) to crop images.
+- **Metadata Preservation:** Updates the FITS header with the new image dimensions and preserves key metadata (e.g., `EXPTIME`, `DATE-OBS`, `FILTER`, `TELESCOP`, `INSTRUME`).
+- **WCS Adjustment:** Automatically updates the WCS reference pixel values (`CRPIX1` and `CRPIX2`) if present.
+- **Multi-HDU Support:** Finds the first HDU containing valid 2D image data.
+- **Command-Line & GUI Options:** Accepts crop parameters via command-line arguments, or falls back to GUI dialogs (using Tkinter) and console input.
+- **Logging:** Uses Python’s `logging` module to output information and error messages.
 
-```sh
-pip install astropy numpy tkinter
+## Requirements
+
+- Python 3.x
+- [Astropy](https://www.astropy.org/)
+- [NumPy](https://numpy.org/)
+- Tkinter
+
+Install the required Python packages (if not already installed) via pip:
+
+```bash
+pip install astropy numpy
 ```
-
-- `astropy`: For handling FITS file operations.
-- `numpy`: For efficient numerical operations.
-- `tkinter`: For graphical folder selection.
 
 ## Usage
-1. Run the script:
-   ```sh
-   python resize.py
-   ```
-2. Select the **source folder** containing FITS files.
-3. Select an **empty destination folder** for cropped images.
-4. Enter the cropping parameters:
-   - Upper-left X coordinate
-   - Upper-left Y coordinate
-   - Crop width
-   - Crop height
-5. The script will process each FITS file in the source folder and save the cropped versions in the destination folder with updated metadata.
+The script is mainly designed for a user-friendly GUI workflow:
+ - **Folder Selection:**  
+A Tkinter dialog lets you choose the source folder (with FITS files) and the destination folder (for saving cropped images).
+- **Crop Parameters:**  
+You are prompted via the console to enter:
+    - `x_start` and `y_start`: The 0-indexed pixel coordinates of the upper-left corner of the crop.
+    - `x_size` and `y_size`: The width and height (in pixels) of the crop.
+- **Alternative Usage (Command-Line Mode):**  
+  For more advanced or automated workflows, you can provide parameters via command-line arguments. The following commands are available:
+  **Basic Command-Line Example:**
+    ```bash
+    python crop_fits.py --source_folder /path/to/source \
+                        --destination_folder /path/to/destination \
+                        --x_start 100 --y_start 100 \
+                        --x_size 500 --y_size 500
+    ```
 
-## Header Updates
-- The FITS header is updated with new image dimensions (`NAXIS1`, `NAXIS2`).
-- The **World Coordinate System (WCS) is updated** to reflect the new reference pixel positions (`CRPIX1`, `CRPIX2`).
-- Non-compliant FITS headers (invalid values) are automatically handled or removed.
-- Essential metadata (`EXPTIME`, `DATE-OBS`, `FILTER`, `TELESCOP`, `INSTRUME`) is preserved.
-- A `HISTORY` entry is added to document the modification.
+## Script Details
 
-## Error Handling
-- If the cropping dimensions exceed the image size, the file will be skipped.
-- Non-compliant FITS headers (e.g., invalid values) are automatically handled or removed.
-- Ensures that cropped images maintain valid celestial coordinate transformations.
+- **Source Folder:** The directory containing your original FITS files.
+- **Destination Folder:** The directory where cropped FITS files will be saved.
+- **x_start & y_start:** The 0-indexed pixel coordinates (in your Python array) marking the upper-left corner of the crop.
+- **x_size & y_size:** The width and height (in pixels) of the crop. For example, an `x_size` of 300 means the cropped image will include 300 pixels in the horizontal direction.
+- **WCS Update:** If the FITS header includes WCS keywords (like `CRPIX1` and `CRPIX2`), the script adjusts these values to reflect the crop. Note that while FITS headers use 1-indexed coordinates, the cropping uses 0-indexed pixel positions in the Python array.
 
-## Example Output
-```
-Cropped and saved: /destination_folder/cropped_image_01.fits
-Cropped and saved: /destination_folder/cropped_image_02.fits
-...
-```
 
-## License
-This project is open-source and available for modification and redistribution under the MIT License.
+## Logging
+
+The script logs progress and errors to the console using Python’s `logging` module. This helps you track which files were processed, skipped, or encountered errors.
